@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#090b14">
+<meta name="description" content="APEX Legends、Fortnite、ブロスタ、Overwatch 2のプレイスタイルを診断する無料ゲーム診断サイト、GAME TYPE LAB。">
+<title>GAME TYPE LAB — ゲームスタイル診断</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="ambient ambient-a"></div><div class="ambient ambient-b"></div>
+<header class="topbar">
+  <a class="brand" href="#" id="homeBrand" aria-label="GAME TYPE LAB ホーム">
+    <span class="brand-mark">G<span>T</span></span>
+    <span>GAME TYPE <b>LAB</b><small>FIND YOUR PLAYSTYLE</small></span>
+  </a>
+  <span class="top-pill"><i></i> FREE GAME QUIZ</span>
+</header>
+<main id="app">
+  <section class="hero" id="homeView">
+    <div class="eyebrow"><span class="eyebrow-line"></span> YOUR GAME. YOUR STYLE.</div>
+    <h1>自分のプレイスタイルを<br><span>解析しよう。</span></h1>
+    <p class="hero-copy">いくつかの質問に答えるだけ。<br>キミのゲームスタイルと、次のレベルへのヒントを見つけよう。</p>
+    <div class="game-grid">
+      <article class="game-card apex-card">
+        <div class="game-top"><span class="game-symbol apex-symbol">A</span><span class="game-tag">BATTLE ROYALE</span></div>
+        <h2>APEX <span>LEGENDS</span></h2>
+        <p>戦況判断、立ち回り、チームでの役割をチェック。</p>
+        <div class="card-bottom"><span>全10問 <b>·</b> 約2分</span><button class="start-btn" data-game="apex">診断スタート <span>↗</span></button></div>
+      </article>
+      <article class="game-card fort-card">
+        <div class="game-top"><span class="game-symbol fort-symbol">F</span><span class="game-tag">BUILD & BATTLE</span></div>
+        <h2>FORTNITE</h2>
+        <p>建築、エイム、判断力。キミの戦い方をチェック。</p>
+        <div class="card-bottom"><span>全10問 <b>·</b> 約2分</span><button class="start-btn" data-game="fortnite">診断スタート <span>↗</span></button></div>
+      </article>
+      <article class="game-card brawl-card">
+        <div class="game-top"><span class="game-symbol brawl-symbol">B</span><span class="game-tag">3V3 ACTION</span></div>
+        <h2>BRAWL <span>STARS</span></h2>
+        <p>立ち回り、役割、チームへの貢献スタイルをチェック。</p>
+        <div class="card-bottom"><span>全10問 <b>·</b> 約2分</span><button class="start-btn" data-game="brawl">診断スタート <span>↗</span></button></div>
+      </article>
+      <article class="game-card overwatch-card">
+        <div class="game-top"><span class="game-symbol ow-symbol">O</span><span class="game-tag">HERO SHOOTER</span></div>
+        <h2>OVERWATCH <span>2</span></h2>
+        <p>タンク・ダメージ・サポートなど、戦い方の傾向をチェック。</p>
+        <div class="card-bottom"><span>全10問 <b>·</b> 約2分</span><button class="start-btn" data-game="overwatch">診断スタート <span>↗</span></button></div>
+      </article>
+    </div>
+    <div class="install-note"><span>↗</span> スマホでは公開URLを開いて「ホーム画面に追加」すると、アプリのように使えるよ。</div>
+    <div class="hero-foot"><span>01 / CHOOSE YOUR GAME</span><span>NO LOGIN · NO API · FREE</span></div>
+  </section>
+
+  <section class="quiz-view hidden" id="quizView" aria-live="polite">
+    <button class="back-link" id="quitQuiz">← 診断一覧へ戻る</button>
+    <div class="quiz-head"><div><div class="eyebrow" id="quizEyebrow">APEX LEGENDS</div><h2 id="quizTitle">診断スタート</h2></div><div class="question-count"><strong id="questionNumber">01</strong><span id="questionTotal">/ 10</span></div></div>
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    <div class="question-card">
+      <div class="question-label">QUESTION <span id="questionLabel">01</span></div>
+      <h3 id="questionText"></h3>
+      <div class="answers" id="answers"></div>
+    </div>
+    <div class="quiz-controls"><button class="secondary-btn" id="prevBtn" disabled>← 前の質問</button><span class="keyboard-hint">直感で選んでOK</span><button class="primary-btn" id="nextBtn" disabled>次へ進む →</button></div>
+  </section>
+
+  <section class="result-view hidden" id="resultView">
+    <button class="back-link" id="resultHome">← 診断一覧へ戻る</button>
+    <div class="result-banner"><span class="result-kicker">YOUR PLAYSTYLE REPORT</span><div class="result-game" id="resultGame"></div><div class="result-emblem" id="resultEmblem">✦</div><div class="result-type-label">YOUR TYPE</div><h2 id="resultTitle"></h2><p id="resultSubtitle"></p></div>
+    <div class="result-columns">
+      <article class="result-info"><div class="info-label">PROFILE <span>01</span></div><h3>キミの特徴</h3><p id="resultDescription"></p></article>
+      <article class="result-info"><div class="info-label">LEVEL UP <span>02</span></div><h3>おすすめの伸ばし方</h3><p id="resultTips"></p></article>
+    </div>
+    <section class="recommend-section" id="recommendSection">
+      <div class="recommend-heading"><div class="info-label">PERSONAL PICKS <span>03</span></div><h3 id="recommendTitle">キミにおすすめのキャラ・武器</h3><p>診断タイプに合わせたおすすめ3選。迷ったら1つ目から試してみよう！</p></div>
+      <div class="recommend-grid" id="recommendGrid"></div>
+      <p class="recommend-footnote">※おすすめはプレイスタイルとの相性をもとにした目安だよ。ゲームのアップデートやマップ、モードによって最適な選択は変わるよ。</p>
+    </section>
+    <div class="result-actions"><button class="primary-btn" id="copyBtn">▣ 結果をコピー</button><button class="secondary-btn" id="shareBtn">↗ 結果をシェア</button><button class="secondary-btn" id="retryBtn">もう一度診断</button></div>
+    <p class="disclaimer">※この診断はエンタメ目的のオリジナル診断です。公式の評価・ランキングではありません。</p>
+  </section>
+</main>
+<footer><span>GAME TYPE LAB <b>©</b> 2026</span><span>UNOFFICIAL FAN-MADE QUIZ · NOT AFFILIATED WITH GAME PUBLISHERS</span></footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="script.js"></script>
+<script>if ("serviceWorker" in navigator && location.protocol.startsWith("http")) window.addEventListener("load", () => navigator.serviceWorker.register("./sw.js").catch(() => {}));</script>
+</body>
+</html>
